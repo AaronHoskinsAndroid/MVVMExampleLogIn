@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.activities.MainActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="examples.aaronhoskins.com.mvvmexample.viewmodel.LoginViewModel" />
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:afterTextChanged="@{(editable) -> viewModel.onUserNameChanged(editable)}"
+        android:hint="User Name"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:afterTextChanged="@{(editable) -> viewModel.onPasswordChanged(editable)}"
+        android:hint="Password"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="@{(view) -> viewModel.login(view)}"/>
+
+</LinearLayout>
+
+</layout>
